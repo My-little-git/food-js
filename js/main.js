@@ -59,14 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+
   function setClock(selector, endtime, block){
-    const block = document.querySelector(block),
-          timer = document.querySelector(selector),
-          days = document.querySelector('#days'),
+    const timer = document.querySelector(selector),
+          days = timer.querySelector('#days'),
           hours = timer.querySelector('#hours'),
           minutes = timer.querySelector('#minutes'),
-          seconds = timer.querySelector('#seconds')
-          timeInterval = setInterval(updateClock, 1000)
+          seconds = timer.querySelector('#seconds'),
+          timeInterval = setInterval(updateClock, 1000),
+          stock = document.querySelector(block)
 
     updateClock()
 
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const t = getTimeRemainging(endtime)
 
       if (t.t < 0) {
-        block.innerHTML = ''
+        stock.innerHTML = ''
         clearInterval(timeInterval)
       }
 
@@ -92,4 +93,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Promotion
 
   setClock('.timer', deadline, '.promotion')
+
+
+  // Modal
+
+  const modalButtons = document.querySelectorAll("[data-modal]"),
+        modalClose = document.querySelector("[data-close]"),
+        modal = document.querySelector('.modal')
+
+  modalButtons.forEach(e => {
+    e.addEventListener('click', ()=>{
+      modal.classList.add('show')
+      modal.classList.remove('hide')
+    })
+  })
+
+  modalClose.addEventListener('click', ()=>{
+    modal.classList.add('hide')
+    modal.classList.remove('show')
+  })
 })
