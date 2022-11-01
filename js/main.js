@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Timer
 
-  const deadline = '2022-10-30';
+  const deadline = '2022-11-10';
 
   function getTimeRemainging(endtime){
     const t = Date.parse(endtime) - Date.parse(new Date()),
