@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock()
 
     function getZero(int){
-      return (int > 0 && int > 10) ? int : `0${int}`
+      return (int > 0 && int >= 10) ? int : `0${int}`
     }
 
     function updateClock(){
